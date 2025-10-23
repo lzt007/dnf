@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "mysql5.5.27" ]
+  pull_request:
+    branches: [ "mysql5.5.27" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build -f $(pwd)/build/Dockerfile -t 1995chen/dnf:2.1.11-mysql5.5.27
