@@ -5,8 +5,6 @@ LABEL AUTHOR 1995chen
 ENV TZ=Asia/Shanghai
 # 安装环境
 RUN cd /etc/yum.repos.d/ && rm -rf * && sed -i "s|enabled=1|enabled=0|g" /etc/yum/pluginconf.d/fastestmirror.conf && \
-    # 添加源
-    curl -o CentOS-Base.repo http://mirrors.vmshell.com/repo/CentOS-Base.repo && \
     # 更新软件
     yum clean all && yum update -y && yum install -y psmisc openssl openssl-devel curl wget perl vim iptables \
     gcc gcc-c++ make zlib-devel libc.so.6 libstdc++ libstdc++.so.6 glibc.i686 libssl.so.6 xulrunner.x86_64 libXtst.x86_64 initscripts bind-utils nc && \
