@@ -16,9 +16,9 @@ on:
         required: false
         type: boolean
   push:
-    branches: [ "mysql5.5.27" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "mysql5.5.27" ]
+    branches: [ "main" ]
 
 jobs:
 
@@ -29,4 +29,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build -f $(pwd)/build/Dockerfile -t 1995chen/dnf:2.1.11-mysql5.5.27
+      run: docker build -f ./build/Dockerfile -t 1995chen/dnf:2.1.11-mysql5.5.27 .
