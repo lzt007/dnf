@@ -45,7 +45,7 @@
 
         <!--max_log_file_num_: 日志文件保留个数，多出的日志文件将会被删除-->
         <!--DEFAULT VALUE: '2'-->
-        <max_log_file_num_>10 </max_log_file_num_>
+        <max_log_file_num_>1 </max_log_file_num_>
 
         <!--max_log_file_size_: 日志文件最大大小-->
         <!--DEFAULT VALUE: '2048000000'-->
@@ -61,7 +61,7 @@
 
         <!--max_bill_file_num_: 帐单文件保留个数-->
         <!--DEFAULT VALUE: '1'-->
-        <max_bill_file_num_>10 </max_bill_file_num_>
+        <max_bill_file_num_>1 </max_bill_file_num_>
 
         <!--max_bill_file_size_: 帐单文件最大大小-->
         <!--DEFAULT VALUE: '2048000000'-->

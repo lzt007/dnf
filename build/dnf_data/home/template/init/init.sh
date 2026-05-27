@@ -160,6 +160,7 @@ do
     else
       echo "$sh_name have already inited, do nothing!"
     fi
+    chmod +x /data/run/$sh_name
   fi
 done
 

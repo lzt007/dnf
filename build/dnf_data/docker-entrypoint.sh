@@ -191,8 +191,8 @@ cp /data/publickey.pem /home/neople/game/
 # 为DP目录赋予权限[为了支持更多未知场景, 这里直接给整个目录777权限]
 chmod 777 -R /data/dp
 # 重置root目录
-cp /home/template/root/* /root/
-chmod 777 /root/*
+cp -r /home/template/root/* /root/
+chmod -R 777 /root/*
 # 拷贝证书key
 cp /data/privatekey.pem /root/
 # 构建配置文件软链[不能使用硬链接, 硬链接不可跨设备]
@@ -209,6 +209,10 @@ sed -i "s/^password=.*/password=$WEB_PASS/" /etc/supervisord.conf
 # 传递环境变量
 SUPERVISORD_ENV="MAIN_BRIDGE_IP=\"$MAIN_BRIDGE_IP\",SERVER_GROUP_NAME=\"$SERVER_GROUP_NAME\",SERVER_GROUP_DB=\"$SERVER_GROUP_DB\",CUR_MAIN_DB_HOST=\"$CUR_MAIN_DB_HOST\",CUR_MAIN_DB_PORT=\"$CUR_MAIN_DB_PORT\",CUR_SG_DB_HOST=\"$CUR_SG_DB_HOST\",CUR_SG_DB_PORT=\"$CUR_SG_DB_PORT\""
 sed -i "s/^environment=.*/environment=$SUPERVISORD_ENV/" /etc/supervisord.conf
+# 确保脚本有执行权限
+chmod +x /home/template/init/mysql_proxy/*.sh
+chmod +x /home/template/init/daily_job/*.sh
+chmod +x /home/template/init/monitor_ip/*.sh
 # 切换到主目录
 cd /root
 supervisord -c /etc/supervisord.conf
