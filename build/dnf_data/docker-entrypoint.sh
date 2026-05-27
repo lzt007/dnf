@@ -38,6 +38,7 @@ export DDNS_DOMAIN=$(echo $DDNS_DOMAIN | sed "s/[\'\"]//g")
 export DDNS_INTERVAL=$(echo $DDNS_INTERVAL | sed "s/[\'\"]//g")
 export NB_SETUP_KEY=$(echo $NB_SETUP_KEY | sed "s/[\'\"]//g")
 export NB_MANAGEMENT_URL=$(echo $NB_MANAGEMENT_URL | sed "s/[\'\"]//g")
+export CLIENT_POOL_SIZE="$(echo "${CLIENT_POOL_SIZE:-10}" | sed "s/[\'\"]//g")"
 # 校验用户选择的大区
 SERVER_GROUP_NAME_VAR="SERVER_GROUP_NAME_$SERVER_GROUP"
 if [ "$SERVER_GROUP" -ge 1 ] && [ "$SERVER_GROUP" -le 6 ]; then
@@ -127,12 +128,14 @@ ln -s /data/dp /dp2
 # 创建日志目录
 mkdir -p /data/log
 mkdir -p /data/log/netbird
+mkdir -p /data/log/tailscale
 # 创建ip监控目录
 mkdir -p /data/monitor_ip
 # 创建daily_job目录
 mkdir -p /data/daily_job
-# 创建netbird目录
+# 创建netbird, tailscale目录
 mkdir -p /data/netbird
+mkdir -p /data/tailscale
 # 创建run脚本目录
 mkdir -p /data/run
 # 初始化数据

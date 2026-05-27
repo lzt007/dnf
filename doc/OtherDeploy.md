@@ -51,12 +51,23 @@
 
 #### Netbird配置
 
-最低优先级，会使用Netbird虚拟IP作为外网IP，缺点是所有客户端均需要加入Netbird虚拟网络。
+次低优先级，会使用Netbird虚拟IP作为外网IP，缺点是所有客户端均需要加入Netbird虚拟网络。
 
 | 环境变量名称 | 描述 | 可选参数 | 默认值 |
 | ------- | ------- | ------- | ------- |
 | NB_MANAGEMENT_URL | Netbird服务器地址 |  | '' |
 | NB_SETUP_KEY | Netbird初始化KEY |  | '' |
+
+
+#### Tailscale配置
+
+最低优先级，会使用Tailscale虚拟IP作为外网IP，缺点是所有客户端均需要加入Tailscale虚拟
+网络。
+
+| 环境变量名称 | 描述 | 可选参数 | 默认值 |
+| ------- | ------- | ------- | ------- |
+| TS_LOGIN_SERVER | Tailscale服务器地址 |  | 'https://controlplane.tailscale.com' |
+| TS_AUTH_KEY | Tailscale初始化KEY |  | '' |
 
 
 ### 基本配置
@@ -70,6 +81,7 @@
 | OPEN_CHANNEL | 开启的频道 | 支持配置范围,配置之间用逗号分隔,例如:1-11,12,22-25,51-55 | '11,52' |
 | DNF_DB_ROOT_PASSWORD | DNF数据库root密码[当使用独立数据库时,root密码用于初始化数据以及game账号自动化创建、授权] |  | '' |
 | DNF_DB_GAME_PASSWORD | DNF数据库game密码[必须8位] |  | '' |
+| CLIENT_POOL_SIZE | 服务端启动时分配的客户端缓冲池大小，此配置项影响df_bridge_r和df_channel_r的内存占用 | 3-1000 | 10 |
 
 ### 进程监控管理页面配置
 
