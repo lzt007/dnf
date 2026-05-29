@@ -1,6 +1,2 @@
 # 运行时内存映射文件（运行时产物，不应提交）
 *.MMAP
-
-# 大文件（超过 GitHub 100MB 限制，通过构建时脚本下载）
-build/dnf_data/home/template/init/Script.tgz
-build/dnf_data/home/template/neople/game/Script.pvf

@@ -31,6 +31,8 @@ if [ ! $error_code -eq 0 ]; then
 fi
 # 判断Script.pvf文件是否初始化过
 if [ ! -f "/data/Script.pvf" ];then
+  # 合并分卷压缩包后解压
+  cat /home/template/init/Script.tgz.part_* > /home/template/init/Script.tgz
   tar -zxvf /home/template/init/Script.tgz -C /home/template/init/
   # 拷贝版本文件到持久化目录
   cp /home/template/init/Script.pvf /data/
