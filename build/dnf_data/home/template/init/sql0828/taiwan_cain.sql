@@ -14,6 +14,11 @@
  Date: 31/05/2026 18:48:26
 */
 
+
+CREATE DATABASE IF NOT EXISTS `taiwan_cain`;
+USE `taiwan_cain`;
+
+
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 

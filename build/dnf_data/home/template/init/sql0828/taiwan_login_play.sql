@@ -14,6 +14,8 @@
  Date: 31/05/2026 18:49:47
 */
 
+CREATE DATABASE IF NOT EXISTS `taiwan_login_play`;
+USE `taiwan_login_play`;
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 

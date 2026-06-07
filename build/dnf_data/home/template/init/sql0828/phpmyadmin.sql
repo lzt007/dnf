@@ -14,6 +14,9 @@
  Date: 31/05/2026 18:50:30
 */
 
+CREATE DATABASE IF NOT EXISTS `phpmyadmin`;
+USE `phpmyadmin`;
+
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 

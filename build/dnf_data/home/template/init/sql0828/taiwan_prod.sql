@@ -13,6 +13,8 @@
 
  Date: 31/05/2026 18:50:03
 */
+CREATE DATABASE IF NOT EXISTS `taiwan_prod`;
+USE `taiwan_prod`;
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;

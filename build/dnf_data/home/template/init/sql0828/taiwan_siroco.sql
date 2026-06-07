@@ -14,6 +14,8 @@
  Date: 31/05/2026 18:50:17
 */
 
+CREATE DATABASE IF NOT EXISTS `taiwan_siroco`;
+USE `taiwan_siroco`;
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 

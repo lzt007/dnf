@@ -14,6 +14,8 @@
  Date: 31/05/2026 18:49:36
 */
 
+CREATE DATABASE IF NOT EXISTS `taiwan_game_event`;
+USE `taiwan_game_event`;
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 

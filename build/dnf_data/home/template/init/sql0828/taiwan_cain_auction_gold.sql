@@ -14,6 +14,8 @@
  Date: 31/05/2026 18:48:50
 */
 
+CREATE DATABASE IF NOT EXISTS `taiwan_cain_auction_gold`;
+USE `taiwan_cain_auction_gold`;
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 

@@ -14,6 +14,8 @@
  Date: 31/05/2026 18:49:57
 */
 
+CREATE DATABASE IF NOT EXISTS `taiwan_mng_manager`;
+USE `taiwan_mng_manager`;
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
