@@ -29,6 +29,33 @@ if [ ! $error_code -eq 0 ]; then
   echo "init server group db failed!!!!!"
   exit -1
 fi
+# 执行追加数据库初始化（sql0828目录下的所有SQL文件）
+if [ -d "/home/template/init/sql0828" ]; then
+  echo "init sql0828 databases..."
+  sql_files=$(ls /home/template/init/sql0828/*.sql 2>/dev/null)
+  if [ -n "$sql_files" ]; then
+    for sql_file in $sql_files; do
+      if [ -f "$sql_file" ]; then
+        echo "executing $(basename $sql_file)..."
+        mysql -h $CUR_MAIN_DB_HOST -P $CUR_MAIN_DB_PORT -u root -p$CUR_MAIN_DB_ROOT_PASSWORD <<EOF
+          source $sql_file;
+          flush PRIVILEGES;
+EOF
+        error_code=$?
+        if [ ! $error_code -eq 0 ]; then
+          echo "executing $sql_file failed!!!!!"
+          exit -1
+        fi
+        echo "executing $(basename $sql_file) success"
+      fi
+    done
+  else
+    echo "no sql files in sql0828, skip."
+  fi
+  echo "init sql0828 databases success"
+else
+  echo "sql0828 folder not found, skip."
+fi
 # 判断Script.pvf文件是否初始化过
 if [ ! -f "/data/Script.pvf" ];then
   # 合并分卷压缩包后解压
