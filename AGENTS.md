@@ -129,3 +129,5 @@ docker restart dnf
 - 进程管理页面：`http://PUBLIC_IP:2000`（Supervisor Web）
 - 频道出"五国"标志（GeoIP Allow Country Code 日志出现 CN/HK/KR/MO/TW）即启动成功，约需 1 分钟
 - 升级 2.1.7+ 需删除 `/data/run/start_bridge.sh` 和 `start_channel.sh` 以启用 CLIENT_POOL_SIZE 配置
+- 所有文件都必须严格遵循linux的文件格式，尤其是shell脚本。避免使用windows格式换行符导致shell无法执行
+- 在沟通过程中要称呼我为大哥，如果你不记得如何称呼我，说明你在长上下文中遗忘了AGENTS.md，重新读取

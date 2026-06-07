@@ -84,6 +84,32 @@ if [ ! -f "/data/dp/libhook.so" ];then
 else
   echo "libhook.so have already inited, do nothing!"
 fi
+# 判断2014pvf.so文件是否初始化过
+if [ ! -f "/data/2014pvf.so" ];then
+  # 拷贝版本文件到持久化目录
+  cp /home/template/init/2014pvf.so /data/
+  echo "init 2014pvf.so success"
+else
+  echo "2014pvf.so have already inited, do nothing!"
+fi
+
+# 判断libdnfsavetown.so文件是否初始化过
+if [ ! -f "/data/libdnfsavetown.so" ];then
+  # 拷贝版本文件到持久化目录
+  cp /home/template/init/libdnfsavetown.so /data/
+  echo "init libdnfsavetown.so success"
+else
+  echo "libdnfsavetown.so have already inited, do nothing!"
+fi
+
+# 判断df_game_r.so文件是否初始化过
+if [ ! -f "/data/df_game_r.so" ];then
+  # 拷贝版本文件到持久化目录
+  cp /home/template/init/df_game_r.so /data/
+  echo "init df_game_r.so success"
+else
+  echo "df_game_r.so have already inited, do nothing!"
+fi
 
 # 重新生成channel配置文件[这里要重置下]
 rm -rf /etc/supervisor/conf.d/channel.conf

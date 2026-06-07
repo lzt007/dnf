@@ -4,6 +4,13 @@
 channel_no=$1
 process_sequence=$2
 channel_name="$SERVER_GROUP_NAME$channel_no"
+cp /data/2014pvf.so /home/neople/game/2014pvf.so
+cp /data/df_game_r.so /home/neople/game/df_game_r.so
+cp /data/libdnfsavetown.so /home/neople/game/libdnfsavetown.so
+cp /data/Script.pvf /home/neople/game/Script.pvf
+chmod +x /home/neople/game/2014pvf.so
+chmod +x /home/neople/game/df_game_r.so
+chmod +x /home/neople/game/libdnfsavetown.so
 
 echo "channel_name is $channel_name"
 echo "prepare to start ch.$channel_no, process_sequence is $process_sequence"
@@ -52,6 +59,6 @@ fi
 rm -rf pid/$channel_name.pid
 
 # 加载DP并启动[确保DP路径已经被正确映射]
-LD_PRELOAD="./2014pvf.so ./df_game_r.so" ./df_game_r $channel_name start
+LD_PRELOAD="./2014pvf.so ./df_game_r.so ./libdnfsavetown.so" ./df_game_r $channel_name start
 sleep 2
 cat pid/$channel_name.pid |xargs -n1 -I{} tail --pid={} -f /dev/null
