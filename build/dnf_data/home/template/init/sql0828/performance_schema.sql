@@ -17,7 +17,7 @@
 CREATE DATABASE IF NOT EXISTS `performance_schema_backup`;
 USE `performance_schema_backup`;
 
-SET NAMES utf8mb4;
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
