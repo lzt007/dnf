@@ -39308,7 +39308,7 @@ DROP TRIGGER IF EXISTS `check_play_count`;
 delimiter ;;
 CREATE TRIGGER `check_play_count` BEFORE UPDATE ON `pvp_result` FOR EACH ROW BEGIN
     IF NEW.play_count < OLD.play_count THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cannot decrease play_count value.';
+        CALL `Cannot decrease play_count value.`;
     END IF;
 END
 ;;
