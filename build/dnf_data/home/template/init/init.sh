@@ -30,23 +30,33 @@ if [ ! $error_code -eq 0 ]; then
   exit -1
 fi
 # 执行追加数据库初始化（sql0828目录下的所有SQL文件）
+# 按文件粒度追踪已执行的SQL，避免容器重启时重复执行导致数据丢失
+# 同时支持升级场景：新增的SQL文件没有标记记录，重启时会自动执行
 if [ -d "/home/template/init/sql0828" ]; then
   echo "init sql0828 databases..."
+  mkdir -p /data/.sql0828_executed
   sql_files=$(ls /home/template/init/sql0828/*.sql 2>/dev/null)
   if [ -n "$sql_files" ]; then
     for sql_file in $sql_files; do
       if [ -f "$sql_file" ]; then
-        echo "executing $(basename $sql_file)..."
-        mysql -h $CUR_MAIN_DB_HOST -P $CUR_MAIN_DB_PORT -u root -p$CUR_MAIN_DB_ROOT_PASSWORD <<EOF
-          source $sql_file;
-          flush PRIVILEGES;
+        sql_name=$(basename $sql_file)
+        # 检查该SQL文件是否已执行过
+        if [ ! -f "/data/.sql0828_executed/${sql_name}.done" ]; then
+          echo "executing $sql_name..."
+          mysql -h $CUR_MAIN_DB_HOST -P $CUR_MAIN_DB_PORT -u root -p$CUR_MAIN_DB_ROOT_PASSWORD <<EOF
+            source $sql_file;
+            flush PRIVILEGES;
 EOF
-        error_code=$?
-        if [ ! $error_code -eq 0 ]; then
-          echo "executing $sql_file failed!!!!!"
-          exit -1
+          error_code=$?
+          if [ ! $error_code -eq 0 ]; then
+            echo "executing $sql_file failed!!!!!"
+            exit -1
+          fi
+          touch "/data/.sql0828_executed/${sql_name}.done"
+          echo "executing $sql_name success"
+        else
+          echo "$sql_name already executed, skip."
         fi
-        echo "executing $(basename $sql_file) success"
       fi
     done
   else
